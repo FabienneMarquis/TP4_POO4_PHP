@@ -2,7 +2,6 @@
 
 // Initialisation
 include 'global/init.php';
-
 // Début de la tamporisation de sortie
 ob_start ();
 
@@ -13,7 +12,6 @@ if (! empty ( $_GET ['module'] ))
 	
 	// Si l'action est specifiée, on l'utilise, sinon, on tente une action par défaut
 	$action = (! empty ( $_GET ['action'] )) ? $_GET ['action'] . '.php' : 'index.php';
-	
 	// Si l'action existe, on l'exécute
 	if (is_file ( $module . $action ))
 	{
