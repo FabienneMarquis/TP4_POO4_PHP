@@ -6,17 +6,74 @@
  * Date: 2016-02-09
  * Time: 10:52
  */
-class Forum extends ParentForum
+class Forum
 {
-    public $titreForum="deafault title";
+    private $ForumID;
+    private $titre="deafault title";
+    private $horoDate;
 
-    public function do_forum()
+
+    /**
+     * Forum constructor.
+     * @param $ForumID
+     * @param string $titre
+     * @param $horoDate
+     */
+    public function __construct($ForumID, $titre, $horoDate)
     {
-        echo $this->titreForum;
-        echo $this->dateHeureForum;
-        echo $this->idForum;
+        $this->ForumID = $ForumID;
+        $this->titre = $titre;
+        $this->horoDate = $horoDate;
     }
-}
 
-?>
+
+    /**
+     * @return mixed
+     */
+    public function getForumID()
+    {
+        return $this->ForumID;
+    }
+
+    /**
+     * @param mixed $ForumID
+     */
+    public function setForumID($ForumID)
+    {
+        $this->ForumID = $ForumID;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param string $titre
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHoroDate()
+    {
+        return $this->horoDate;
+    }
+
+    /**
+     * @param mixed $horoDate
+     */
+    public function setHoroDate($horoDate)
+    {
+        $this->horoDate = $horoDate;
+    }
+
+
 }

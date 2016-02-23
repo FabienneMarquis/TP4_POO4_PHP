@@ -12,3 +12,7 @@ define ('CHEMIN_MODELE', 'modele/');
 define ('CHEMIN_LIB', 'libs/');
 define('CHEMIN_VUE_GLOBALE', 'vues_globales/');
 
+// Configurations relatives à l'avatar
+define('AVATAR_LARGEUR_MAXI', 100);
+define('AVATAR_HAUTEUR_MAXI', 100);
+define('DOSSIER_AVATAR','images/avatar/');

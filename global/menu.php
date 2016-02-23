@@ -1,26 +1,27 @@
-<?php
-if (!isset($_SESSION['user']))
-    echo '
+
+<?php if (!utilisateur_est_connecte()) { ?>
+
 <div id="menu">
     <ul>
         <li class="left"><a href="index.php?module=membres&amp;action=inscription">Inscription </a></li>
-        <li class="left"><a href="index.php?module=connexion&amp;action=connexion">Connexion</a></li>
+        <li class="left"><a href="index.php?module=membres&amp;action=connexion">Connexion</a></li>
         <li> Bienvenu!</li>
     </ul>
 </div>
-';
 
 
-else
-    echo '
 
-<div id="menu">
-    <ul>
-        <li class="left"><a href="index.php?module=user&amp;action=profil">Votre profil </a></li>
-        <li class="left"><a href="index.php?module=forum&amp;action=forum">Forum</a></li>
-        <li class="left"><a href="index.php?module=user&amp;action=disconnect">Deconnexion</a></li>
-        <li> Bienvenue ' . $_SESSION['user']->getName() . '!</li>
-    </ul>
-</div>
-'
-?>
+<?php } else { ?>
+    <div id="menu">
+        <ul>
+            <li class="left"><a href="index.php?module=membres&amp;action=afficher_profil&amp;id=<?php echo $_SESSION['id']; ?>">Votre profil </a></li>
+            <li class="left"><a href="index.php?module=forum&amp;action=afficher_forum">Forum</a></li>
+            <li class="left"><a href="index.php?module=membres&amp;action=deconnexion">Deconnexion</a></li>
+            <li class="left"><a href="index.php?module=membres&amp;action=modifier_profil">Modifier Profil</a></li>
+            <li> Bienvenue <?php echo $_SESSION['pseudo']; ?>!</li>
+        </ul>
+    </div>
+<?php } ?>
+
+
+

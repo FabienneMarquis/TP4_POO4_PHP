@@ -8,15 +8,18 @@
  */
 class ForumDAO
 {
-    public function getForums()
+    public static function getForums()
     {
-        session_start();
-        try {
-            idcom :
-            new PDO('mysql:host=localhost;dbname=bd stagiaires;charset=utf8',
-                'root', '');
-        } catch (Exception $e) {
-            die ('Erreur : ' . $e->getMessage());
+        $pdo = PDO2::getInstance();
+
+        $requete = $pdo->prepare("SELECT * FROM forum");
+
+        $requete->execute();
+        $forums = array();
+        while($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+            $forums[$result['ForumID']] = new Forum($result['ForumID'],$result['titre'],$result['horoDate']);;
         }
+        $requete->closeCursor();
+        return $forums;
     }
 }

@@ -54,10 +54,9 @@ if ($form_inscription->is_valid($_POST)) {
             $form_inscription->get_cleaned_data('nom_utilisateur', 'mdp', 'adresse_email', 'avatar');
 
 // On veut utiliser le modele de l'inscription (~/modeles/inscription.php)
-        include CHEMIN_MODELE . 'inscription.php';
 
 // ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-        $id_utilisateur = ajouter_membre_dans_bdd($nom_utilisateur, sha1($mot_de_passe), $adresse_email, $hash_validation);
+        $id_utilisateur = membres::ajouter_membre_dans_bdd($nom_utilisateur, sha1($mot_de_passe), $adresse_email, $hash_validation);
 
 // Si la base de données a bien voulu ajouter l'utliisateur (pas de doublons)
         if (ctype_digit($id_utilisateur)) {
@@ -74,16 +73,15 @@ if ($form_inscription->is_valid($_POST)) {
 
                 // Redimensionnement et sauvegarde de l'avatar
                 $avatar = new Image($avatar);
-                $avatar->resize_to(100, 100); // Image->resize_to($largeur_maxi, $hauteur_maxi)
+                $avatar->resize_to(AVATAR_LARGEUR_MAXI, AVATAR_HAUTEUR_MAXI); // Image->resize_to($largeur_maxi, $hauteur_maxi)
                 $avatar_filename = 'images/avatar/' . $id_utilisateur . '.' . strtolower(pathinfo($avatar->get_filename(), PATHINFO_EXTENSION));
                 $avatar->save_as($avatar_filename);
 
-                // On veut utiliser le modele des membres (~/modeles/membres.php)
-                include CHEMIN_MODELE . 'membres.php';
+
 
                 // Mise à jour de l'avatar dans la table
                 // maj_avatar_membre() est défini dans ~/modeles/membres.php
-                maj_avatar_membre($id_utilisateur, $avatar_filename);
+                membres::maj_avatar_membre($id_utilisateur, $avatar_filename);
 
             }
 
@@ -100,7 +98,7 @@ if ($form_inscription->is_valid($_POST)) {
             if (23000 == $erreur[0]) { // Le code d'erreur 23000 siginife "doublon" dans le standard ANSI SQL
 
                 preg_match("`Duplicate entry '(.+)' for key '(.+)'`is", $erreur[2], $valeur_probleme);
-                var_dump($erreur);
+                //var_dump($erreur);
                 $valeur_probleme = $valeur_probleme[1];
 
                 if ($nom_utilisateur == $valeur_probleme) {
