@@ -78,6 +78,14 @@ span.label_profil {
 	border-width: 1px;
 	border-color: #000000;
 }
+.message-panel{
+	margin-top: 5px;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dae0ee;
+	padding: 5px;
+}
 fieldset {
 	background-color: #FFFFFF;
 }
