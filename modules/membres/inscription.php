@@ -1,7 +1,6 @@
+
+
 <?php
-
-
-// "formulaire_inscription" est l'ID unique du formulaire
 $form_inscription = new Form('formulaire_inscription');
 
 $form_inscription->method('POST');
@@ -24,7 +23,7 @@ $form_inscription->add('File', 'avatar')
     ->label("Votre avatar (facultatif)")
     ->Required(false);
 
-$form_inscription->add('Submit', 'submit')
+$form_inscription->add('submit', 'submit')
     ->value("Je veux m'inscrire !");
 
 // Pré-remplissage avec les valeurs précédemment entrées (s'il y en a)
@@ -57,7 +56,6 @@ if ($form_inscription->is_valid($_POST)) {
 
 // ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
         $id_utilisateur = membres::ajouter_membre_dans_bdd($nom_utilisateur, sha1($mot_de_passe), $adresse_email, $hash_validation);
-
 // Si la base de données a bien voulu ajouter l'utliisateur (pas de doublons)
         if (ctype_digit($id_utilisateur)) {
 

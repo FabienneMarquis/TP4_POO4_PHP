@@ -54,7 +54,7 @@ CREATE TABLE `membres` (
   `nom_utilisateur` varchar(32) NOT NULL,
   `mot_de_passe` char(40) NOT NULL,
   `adresse_email` varchar(128) NOT NULL,
-  `hash_validation` char(32) NOT NULL,
+  `hash_validation` char(32),
   `date_inscription` date NOT NULL,
   `avatar` varchar(128) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),

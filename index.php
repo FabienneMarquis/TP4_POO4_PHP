@@ -1,9 +1,7 @@
 <?php
-
 // Initialisation
 include 'global/init.php';
 // Début de la tamporisation de sortie
-ob_start ();
 
 // Si un module est specifié, on regarde s'il existe
 if (! empty ( $_GET ['module'] ))

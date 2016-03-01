@@ -50,6 +50,7 @@ if (utilisateur_est_connecte()) {
         // On veut utiliser le modèle des membres (~/modeles/membres.php)
 
         // combinaison_connexion_valide() est définit dans ~/modeles/membres.php
+
         $id_utilisateur = membres::combinaison_connexion_valide($nom_utilisateur, sha1($mot_de_passe));
 
         // Si les identifiants sont valides

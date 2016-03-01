@@ -54,8 +54,7 @@ class membres
         $requete = $pdo->prepare("SELECT id FROM membres
 		WHERE
 		nom_utilisateur = :nom_utilisateur AND
-		mot_de_passe = :mot_de_passe AND
-		hash_validation = ''");
+		mot_de_passe = :mot_de_passe");
 
         $requete->bindValue(':nom_utilisateur', $nom_utilisateur);
         $requete->bindValue(':mot_de_passe', $mot_de_passe);
